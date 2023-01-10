@@ -16,7 +16,7 @@ do{
     ingreseCantidad = parseInt(prompt("Ingrese la cantidad de velas que desea asquirir (maximo 10)."));
     resultadoFinal = item * ingreseCantidad;
 
-}while(ingreseCantidad>0 && ingreseCantidad<11)
+}while(ingreseCantidad<1 || ingreseCantidad>10 || isNaN(ingreseCantidad))
     alert(`El precio final es: $${resultadoFinal}`)
 }
 //funcion COMPRA
@@ -26,10 +26,11 @@ function compra (){
     let ingreseProducto = parseInt(prompt("Ingrese el numero del producto que quiere adquirir: 1.frambuesa, 2. arandanos, 3. manzana, 4.vainilla, para salir ingrese 0"));
 
     switch (ingreseProducto){
+        case 0:
+            alert("Gracias por su compra.")
+            break;
         case 1:
-           multiplicacion (frambuesa);
-             //let precioFinal = multiplicacion (frambuesa);
-             //alert(`El precio final es: $${precioFinal}`)
+            multiplicacion (frambuesa);
             break;
         case 2:
 	        multiplicacion (arandano);
