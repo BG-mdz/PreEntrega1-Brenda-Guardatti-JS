@@ -1,42 +1,35 @@
-//envios-CONDICIONALES
-let zona = prompt("Ingrese en que zona vive: Latinoamerica. Europa. Asia ").toLowerCase();
 
-if (zona == "latinoamerica"){
-    alert ("Realizamos envios");
-}
-else if (zona == "europa"){
-    alert ("Consulte condiciones de envio");
-}
-else if (zona == "asia"){
-    alert ("No realizamos envios a su zona");
-}
-else{
-    alert ("Ha ingresado una zona no valida.");
-}
-
-//productos-CICLOS
+//productos
 const frambuesa = 300;
 const arandano = 120;
 const manzana = 1000;
 const vainilla = 400;
-let resultadoFinal;
 let ingreseProducto;
 
+//Funciones
 //multiplicacion-FUNCTION
 
 function multiplicacion (item){
-    ingreseCantidad = parseInt(prompt("Ingrese la cantidad de velas que desea asquirir."));
-    resultadoFinal = item * ingreseCantidad;
-    alert ("El precio final es " + resultadoFinal);
-}
-
-//productos-CICLOS
+    let ingreseCantidad;
+    let resultadoFinal;
 do{
+    ingreseCantidad = parseInt(prompt("Ingrese la cantidad de velas que desea asquirir (maximo 10)."));
+    resultadoFinal = item * ingreseCantidad;
+
+}while(ingreseCantidad>0 && ingreseCantidad<11)
+    alert(`El precio final es: $${resultadoFinal}`)
+}
+//funcion COMPRA
+//productos-CICLOS
+function compra (){
+    do{
     let ingreseProducto = parseInt(prompt("Ingrese el numero del producto que quiere adquirir: 1.frambuesa, 2. arandanos, 3. manzana, 4.vainilla, para salir ingrese 0"));
 
     switch (ingreseProducto){
         case 1:
-            multiplicacion (frambuesa);
+           multiplicacion (frambuesa);
+             //let precioFinal = multiplicacion (frambuesa);
+             //alert(`El precio final es: $${precioFinal}`)
             break;
         case 2:
 	        multiplicacion (arandano);
@@ -47,9 +40,29 @@ do{
         case 4:
 	        multiplicacion (vainilla);
             break;
+        default:
+            alert ("Ingreso una opcion incorrecta")
+            break
     }
 
 }
-while (ingreseProducto != 0)
+while (ingreseProducto !== 0)
+}
 
 
+//envios-CONDICIONALES
+let zona = prompt("Ingrese en que zona vive:" + "\n" + "Latinoamerica" + "\n" + "Europa" + "\n" +  "Asia ").toLowerCase();
+
+
+if (zona == "latinoamerica"){
+compra();
+}
+else if (zona == "europa"){
+    alert ("Consulte condiciones de envio");
+}
+else if (zona == "asia"){
+    alert ("No realizamos envios a su zona");
+}
+else{
+    alert ("Ha ingresado una zona no valida.");
+}
