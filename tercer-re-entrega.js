@@ -20,38 +20,6 @@ const velas = [velaFrambuesa, velaArandano, velaMAnzana, velaVainilla];
 console.log (velas);
 /**ARRAY carrito vacio */
 let carrito =[];
-/**MENU PRINCIPAL */
-function seleccionProductos() {
-    let productoElegido;
-    do {
-        productoElegido = parseInt(prompt("Ingrese el numero del producto que desea adquirir:" + "\n" + "1. Vela de Frambuesa" + "\n" + "2. vela de Arandano"+ "\n"+ "3. Vela de Manzana & Canela" + "\n" + "4. Vela de Vainilla"  + "\n" +  "5. Continuar con la compra" +"\n" + "6. Para saber si el producto esta en oferta"+ "\n" + "0. Salir"))
-        if(productoElegido >= 0 && productoElegido <= 6){
-            switch (productoElegido) {
-                case 0:
-                    alert("Saliste, gracias")
-                    break;
-                case 5:
-                    pagarCarrito()
-                    // let  total = pagarCarrito()
-                    // document.getElementByID ("total").innertext = `El total es: ${total}`;
-                    break;
-                case 6:
-                    productoEnOferta()
-                    break;
-                default:
-                    buscarProductos(productoElegido)
-                    break;
-            }
-        } else {
-            alert("Ingresaste un valor inválido.")
-        }
-    } while (productoElegido !== 6 && productoElegido !== 0)
-}
-
-function buscarProductos(valor) {
-    const velaBuscada = velas.find(vela => vela.id === valor);
-    elegirCantidad(velaBuscada)
-}
 
 function elegirCantidad(velaElegida){
     let cantidad = parseInt(prompt("Ingrese la cantidad deseada"));
@@ -74,7 +42,6 @@ function elegirCantidad(velaElegida){
     }
 
 }
-
 function pagarCarrito(){
 
     let total = 0;
@@ -85,22 +52,6 @@ function pagarCarrito(){
     alert("Felicidades. Pasá a pagar. El precio final es de: $" + total)
     carrito = []
 }
-
-function productoEnOferta(){
-    let ingreseProducto;
-    do{
-        ingreseProducto=Number(prompt("Ingrese producto del cual desea saber si esta en oferta"));
-        let velaBuscada = velas.find(vela=>vela.id===ingreseProducto);
-        if (velaBuscada.oferta){
-            alert("Este producto se encuentra en oferta");
-        }
-        else{
-            alert("Lo sentimos. Actualmente este producto no esta en oferta");
-        }
-    }while(ingreseProducto !==0|| isNaN(ingreseProducto));
-}
-seleccionProductos();
-
 
 //capturando eventos en el DOM
 let html = "";
@@ -124,15 +75,13 @@ velas.forEach(element =>{
 document.getElementById("display-container").innerHTML = html;
 
 function AddToCart (elegirCantidad){
+
+    localStorage.getItem("compra")? carrito = JSON.parse(localStorage.getItem("compra")) : carrito=[]
+
     let producto = velas.find(element=>element.id===elegirCantidad)
     carrito.push(producto)
     localStorage.setItem("compra", JSON.stringify(carrito))
     console.log(carrito);
 }
-// function TakeOutfromCart(removerCarrito){
 
-//     console.log();
-// }
-
-
-
+//if 

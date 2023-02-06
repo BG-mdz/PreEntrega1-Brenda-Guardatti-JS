@@ -8,18 +8,25 @@ https://www.youtube.com/watch?v=9Sqbc4DgNSs*/
     box-sizing: border-box;
 }
 
-section{
+/*section{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 50px 0;
+}*/
+
+section h1{
+    width: 100%;
+}
+
+#container{
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 50px 0;
 }
-
-section h1{
-    width: 100%;
-}
-
 .card{
     width: 30%;
 }
