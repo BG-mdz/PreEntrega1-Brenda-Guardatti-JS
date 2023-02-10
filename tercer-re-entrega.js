@@ -12,7 +12,7 @@ class Vela{
 //ARRAY OBJETOS
 const velaFrambuesa = new Vela (1,"Frambuesa", 300,true,"assets/imagenes/Frambuesa-500.png");
 const velaArandano = new Vela (2, "Arandano", 120,false, "assets/imagenes/Arandanos-500.png");
-const velaMAnzana = new Vela (3, "ManzanaCanela", 1000,false, "assets/imagenes/manzana-500.png");
+const velaMAnzana = new Vela (3, "ManzanaCanela", 1000,false, "assets/imagenes/manzana-canela-500.png");
 const velaVainilla = new Vela (4, "Vainilla", 400,true,"assets/imagenes/Vainilla-500.png");
 
 /**ARRAY de OBJETOS */
@@ -28,7 +28,7 @@ velas.forEach((element,index) =>{
 
     html += //sugar syntax +=
     `<br />
-    <div class= ${index}>
+    <div class= "card" id= ${index}>
     <li>
         <img src=${element.img} alt="imagen-vela" />
     </li>
@@ -39,8 +39,8 @@ velas.forEach((element,index) =>{
             Precio:${element.precio}
         </li>
 
-        <button class="button" onclick=agregarCarrito (${index})> Agregar al carrito </button>
-        <button class="button" onclick=removerCarrito (${index})>Remover del carrito </button>
+        <button class="button" onclick=agregarCarrito(${index})> Agregar al carrito </button>
+        <button class="button" onclick=removerCarrito(${index})>Remover del carrito </button>
     </div>
     <br>`
     })
@@ -48,8 +48,8 @@ document.getElementById("display-container").innerHTML = html;
 
 document.getElementById ("btn-carrito").innerHTML = `<button onclick=mostrarCarrito()>Ver/Esconder carrito</button>`
 
-function agregarCarrito (id){
-
+function agregarCarrito(id){
+console.log("agregar producto")
     let vela = velas[id]
         if (carrito.some(element=>element.id=== vela.id)) {
             carrito.forEach(element=>{
@@ -91,11 +91,11 @@ function removerCarrito(id){
 function mostrarCarrito() {
 
     let carritoHTML = document.getElementById("carrito")
-
+    console.log(carrito)
     if(carritoHTML.textContent === ""){
         let mostrarCarritoHTML = ""
         if(carrito.length > 0){
-            carrito.forEach(el => {
+            carrito.forEach(element => {
                 mostrarCarritoHTML += `
                 <div>
                     <li>
