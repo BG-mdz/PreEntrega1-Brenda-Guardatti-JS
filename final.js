@@ -1,19 +1,28 @@
-class Product{
-    constructor (id,name,price,img){
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.img = img;
-        this.quantity = 1
-    }
-}
+/**ontengo los productos con fetch dede JSON */
+fetch("productos.json")
+    .then((response)=>{
+        return response.json();
+    })
+    .then((responseProducts) => {
+        renderProducts (responseProducts);
+    })
 
-const raspberryCandle = new Product (1,"Frambuesa", 300,"assets/imagenes/Frambuesa-500.png");
-const blueberryCandle = new Product (2, "Arandano", 120,"assets/imagenes/Arandanos-500.png");
-const appleCandel = new Product (3, "ManzanaCanela", 1000,"assets/imagenes/manzana-canela-500.png");
-const vanillaCandle = new Product (4, "Vainilla", 400,"assets/imagenes/Vainilla-500.png");
-const sofa = new Product (5, "sillon", 50000,"assets/imagenes/Vainilla-500.png");
-const vase = new Product (6, "jarron", 700,"assets/imagenes/Vainilla-500.png");
+// class Product{
+//     constructor (id,name,price,img){
+//         this.id = id;
+//         this.name = name;
+//         this.price = price;
+//         this.img = img;
+//         this.quantity = 1
+//     }
+// }
+
+// const raspberryCandle = new Product (1,"Frambuesa", 300,"assets/imagenes/Frambuesa-500.png");
+// const blueberryCandle = new Product (2, "Arandano", 120,"assets/imagenes/Arandanos-500.png");
+// const appleCandel = new Product (3, "ManzanaCanela", 1000,"assets/imagenes/manzana-canela-500.png");
+// const vanillaCandle = new Product (4, "Vainilla", 400,"assets/imagenes/Vainilla-500.png");
+// const sofa = new Product (5, "sillon", 50000,"assets/imagenes/Vainilla-500.png");
+// const vase = new Product (6, "jarron", 700,"assets/imagenes/Vainilla-500.png");
 
 /**ARRAY de OBJETOS */
 const products = [raspberryCandle, blueberryCandle, appleCandel, vanillaCandle, sofa, vase];
