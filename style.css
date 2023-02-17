@@ -1,35 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap');
-/*https://codepen.io/yaxpac/pen/XWdgXvb?editors=1100 
-https://www.youtube.com/watch?v=9Sqbc4DgNSs*/
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/*section{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 50px 0;
-}*/
 
-section h1{
-    width: 100%;
-}
 
-#container{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 50px 0;
-}
-.card{
-    width: 30%;
-}
 .estilo-c{
     font-family: sans-serif;
     width: 20%;
@@ -49,9 +26,6 @@ section h1{
     transform: scale(1.2);
 }
 .estilo-c .img-container .promo{
-    position: absolute;
-    top: 10px;
-    left: 0;
     font-size: 20px;
     background: yellow;
     padding: 15px;
@@ -88,3 +62,5 @@ section h1{
     background-color: transparent;
     border: 1px solid black;
 }
+
+

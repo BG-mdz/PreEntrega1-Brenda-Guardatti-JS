@@ -3,84 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title>Carrito de Compras</title>
 </head>
 <body>
-    <main>
-    <section class="seccion-productos">
-        <h1>Seleccione producto y cantidades que desea adquirir</h1>
-        <div id="container">
-<!--tarjeta1-->
-        <div class="card estilo-c">
-            <a href="#">
-              <div class="img-container">
-                <img src="/assets/imagenes/Frambuesa-500.png" alt="vela aroma frambuesa">
-                <span class="promo">15% de descuento</span>
-              </div>
-             </a>
-            <div class="info-container">
-              <h3>Vela Aroma Frutal Frambuesa</h3>
-              <strong>$360</strong>
-              <span class="rating">★★★★☆</span>
-              <button class="add-cart" data-id="1">Añadir al carrito</button>
-            </div>
-          </div>
-    <!--tarjeta2-->
-          <div class="card estilo-c">
-            <a href="#">
-              <div class="img-container">
-                <img src="/assets/imagenes/Arandanos-500.png" alt="vela aroma arandanos">
-                <span class="promo">15% de descuento</span>
-              </div>
-              </a>
-            <div class="info-container">
-              <h3>Vela Aroma Frutal Arandano</h3>
-              <strong>$120</strong>
-              <span class="rating">★★★☆☆</span>
-              <button class="add-cart" data-id="2">Añadir al carrito</button>
-            </div>
-          </div>
-    <!--tarjeta3-->
-          <div class="card estilo-c">
-            <a href="#">
-              <div class="img-container">
-                <img src="/assets/imagenes/manzana-canela-500.png" alt="vela aroma manzana y canela">
-                <span class="promo">15% de descuento</span>
-              </div>
-              </a>
-            <div class="info-container">
-              <h3>Vela Aroma Frutal & Escencias Manzana & Canela</h3>
-              <strong>$120</strong>
-              <span class="rating">★★★★★</span>
-              <button class="add-cart" data-id="3">Añadir al carrito</button>
-            </div>
-          </div>
-    <!--tarjeta4-->
-          <div class="card estilo-c">
-            <a href="#">
-              <div class="img-container">
-                <img src="/assets/imagenes/Vainilla-500.png" alt="vela aroma vainilla">
-                <span class="promo">15% de descuento</span>
-              </div>
-              </a>
-            <div class="info-container">
-              <h3>Vela Aroma  Escencias Vainilla</h3>
-              <strong>$120</strong>
-              <span class="rating">★★★★★</span>
-              <button class="add-cart" data-id="4">Añadir al carrito</button>
-            </div>
-          </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/navbar/logo/favicon-32x32.png" alt="logo" width="30" height="24" class="d-inline-block align-text-top">
+                Home Sweet Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About us</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </li>
+            </ul>
+            <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
+        </div>
+    </nav>
+    <main>
+    <section class="container">
+    <h2>Looking for the perfect decoration for your house? You are in the right place.</h2>
+    <div id="productsContainer" class="row"></div>
+    <div class="purchaseDescription">
+        <h2>Carrito de compras</h2>
+        <h3>El total de la compra es de <span id="total"></span> </h3>
+        <button class="btn colorBoton" id="showCart">Ver/Esconder Carrito</button>
+        <button class="btn colorBoton" id="emptyCart">Vaciar Carrito</button>
+
+        <div id="cartContainer" class="row"></div>
+</div>
     </section>
-    <section class="seccion-tabla-productos">
-      <h2>Selecciona producto y cantidad.</h2>
-      <div id="display-container"></div>
-      <div id="btn-carrito"></div>
-    </section>
-    <div id="carrito"></div>
     </main>
-    <script src="tercer-re-entrega.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="final.js"></script>
 </body>
 </html>

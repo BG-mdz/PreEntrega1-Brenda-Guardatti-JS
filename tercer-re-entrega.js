@@ -1,3 +1,6 @@
+const toggleMenu = () => {
+    document.body.classList.toggle("open");
+};
 /**Objeto con CLASS */
 class Vela{
     constructor (id,nombre,precio,oferta,img){
@@ -12,63 +15,71 @@ class Vela{
 //ARRAY OBJETOS
 const velaFrambuesa = new Vela (1,"Frambuesa", 300,true,"assets/imagenes/Frambuesa-500.png");
 const velaArandano = new Vela (2, "Arandano", 120,false, "assets/imagenes/Arandanos-500.png");
-const velaMAnzana = new Vela (3, "ManzanaCanela", 1000,false, "assets/imagenes/manzana-canela-500.png");
+const velaManzana = new Vela (3, "ManzanaCanela", 1000,false, "assets/imagenes/manzana-canela-500.png");
 const velaVainilla = new Vela (4, "Vainilla", 400,true,"assets/imagenes/Vainilla-500.png");
 
 /**ARRAY de OBJETOS */
-const velas = [velaFrambuesa, velaArandano, velaMAnzana, velaVainilla];
-console.log (velas);
-/**ARRAY carrito vacio */
-//let carrito =[];
-let carrito = localStorage.getItem ("carrito") ? localStorage. getItem("carrito") : [];
+const velas = [velaFrambuesa, velaArandano, velaManzana, velaVainilla];
+
+
+let carrito = localStorage.getItem ("compra") ? JSON.parse(localStorage.getItem("compra")) : [];
+
 //capturando eventos en el DOM
 let html = "";
 
-velas.forEach((element,index) =>{
+velas.forEach((element) =>{
 
     html += //sugar syntax +=
     `<br />
-    <div class= "card" id= ${index}>
-    <li>
-        <img src=${element.img} alt="imagen-vela" />
-    </li>
-    <li>
-            Nombre:${element.nombre}
-        </li>
-        <li>
-            Precio:${element.precio}
-        </li>
-
-        <button class="button" onclick=agregarCarrito(${index})> Agregar al carrito </button>
-        <button class="button" onclick=removerCarrito(${index})>Remover del carrito </button>
+    <div class= "container" id= ${element.id}>
+        <div class="card estilo-c">
+            <a href="#">
+                <div class="img-container">
+                <img src=${element.img} alt="imagen-vela" />
+                <span class="promo">15% de descuento</span>
+                </div>
+            </a>
+            <div class="info-container">
+                <h3>${element.nombre}</h3>
+                <stron>${element.precio}</stron>
+                <span class="rating">★★★★☆</span>
+                <button class="add-cart" class="button" onclick=agregarCarrito(${element.id})> Agregar al carrito </button>
+                <button class="add-cart" class="button" onclick=removerCarrito(${element.id})>Remover del carrito </button>
+            </div>
     </div>
     <br>`
     })
 document.getElementById("display-container").innerHTML = html;
 
-document.getElementById ("btn-carrito").innerHTML = `<button onclick=mostrarCarrito()>Ver/Esconder carrito</button>`
+let btnCarrito = document.getElementById("btn-carrito")
+btnCarrito.addEventListener("click", mostrarCarrito)
+
+// document.getElementById ("btn-carrito").innerHTML = `<button class="add-cart" onclick=mostrarCarrito()>Ver/Esconder carrito</button>`
 
 function agregarCarrito(id){
-console.log("agregar producto")
-    let vela = velas[id]
-        if (carrito.some(element=>element.id=== vela.id)) {
+    let vela = velas[id - 1]
+        if (carrito.some(element=> element.id=== vela.id)) {
             carrito.forEach(element=>{
                 if(element.id===vela.id){
-                    element.cantidad +=1
+                    element.cantidad += 1
                 }
             })
         }else{
-            let nuevoProductoParaCarrito ={
+            let nuevoProductoParaCarrito = {
                 id: vela.id,
                 nombre: vela.nombre,
                 precio: vela.precio,
                 cantidad: 1,
+                img:vela.img,
             }
             carrito.push(nuevoProductoParaCarrito);
-            alert("Producto agregado con éxito!")
+            swal({
+                title: "Genial!",
+                text: "Tu producto se agrego con exito al carrito",
+                icon: "success"});
         }
         localStorage.setItem("compra", JSON.stringify(carrito));
-        localStorage.getItem("compra")? carrito = JSON.parse(localStorage.getItem("compra")) : carrito=[]
+        localStorage.getItem("compra") ? carrito = JSON.parse(localStorage.getItem("compra")) : carrito = []
     }
 function removerCarrito(id){
     if (carrito.some(element => element.id === id)) {
@@ -84,14 +95,17 @@ function removerCarrito(id){
             }
         })
     } else {
-        console.log("El producto no se encuentra en el carrito")
+        swal({
+            title:"Ups!",
+            text: "El producto no se encuentra actualmente en el carrito",
+            icon: "warning"});
     }
 }
 
 function mostrarCarrito() {
 
     let carritoHTML = document.getElementById("carrito")
-    console.log(carrito)
+
     if(carritoHTML.textContent === ""){
         let mostrarCarritoHTML = ""
         if(carrito.length > 0){
@@ -127,3 +141,14 @@ function mostrarCarrito() {
         carritoHTML.textContent = ""
     }
 }
+
+// function pagarCarrito(){
+
+//     let total = 0;
+//     carrito.forEach(element => {
+//         total += element.precio * element.cantidad
+//     })
+//     alert("Felicidades. Pasá a pagar. El precio final es de: $" + total)
+//     carrito = []
+// }
+//40:00 booton de finalizar compra
