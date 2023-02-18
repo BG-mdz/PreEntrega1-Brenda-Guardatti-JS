@@ -3,36 +3,42 @@
         "id":1,
         "name": "Frambuesa",
         "price":300,
-        "img":"assets/imagenes/Frambuesa-500.png"
+        "img":"assets/imagenes/Frambuesa-500.png",
+        "quantity": 1
     },
     {
         "id":2,
         "name": "Arandano",
         "price":120,
-        "img":"assets/imagenes/Arandanos-500.png"
+        "img":"assets/imagenes/Arandanos-500.png",
+        "quantity": 1
     },
     {
         "id":3,
         "name": "ManzanaCanela",
         "price":1000,
-        "img":"assets/imagenes/manzana-canela-500.png"
+        "img":"assets/imagenes/manzana-canela-500.png",
+        "quantity": 1
     },
     {
         "id":4,
         "name": "Vainilla",
         "price":400,
-        "img":"assets/imagenes/Vainilla-500.png"
+        "img":"assets/imagenes/Vainilla-500.png",
+        "quantity": 1
     },
     {
         "id":5,
         "name": "sillon",
         "price":50000,
-        "img":"assets/imagenes/Vainilla-500.png"
+        "img":"assets/imagenes/Vainilla-500.png",
+        "quantity": 1
     },
     {
         "id":6,
         "name": "jarron",
         "price":700,
-        "img":"assets/imagenes/Vainilla-500.png"
+        "img":"assets/imagenes/Vainilla-500.png",
+        "quantity": 1
     }
 ]
